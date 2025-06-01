@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Create Royal Wedding</title>
+    
+    <!-- ✅ Bootstrap CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+
+    <!-- 🎨 Custom Golden Theme Styling -->
+    <style>
+        body {
+            background: linear-gradient(to bottom right, #fffaf0, #fff3cd);
+            font-family: 'Segoe UI', sans-serif;
+        }
+
+        h2 {
+            text-align: center;
+            margin: 20px 0;
+            font-family: 'Cinzel', serif;
+            color: #b08500;
+            text-shadow: 0 0 6px #ffebb3;
+        }
+
+        .register-form {
+            max-width: 600px;
+            margin: auto;
+            background: #fffbea;
+            padding: 30px;
+            border-radius: 15px;
+            border: 2px solid #ffd700;
+            box-shadow: 0 0 15px rgba(255, 217, 102, 0.5);
+        }
+
+        .form-control, .form-select {
+            border: 1px solid #f0c000;
+        }
+
+        .btn-warning {
+            background-color: #e6b800;
+            border: none;
+        }
+
+        .btn-warning:hover {
+            background-color: #cc9900;
+        }
+    </style>
+</head>
+<body>
+    <!-- ✅ Working Navbar Include -->
+    {% include 'navbar.html' %}
+    {% if user and user.photo %}
+    <div class="text-center mb-3">
+        <img src="{{ url_for('static', filename=user.photo) }}" alt="Profile Photo" class="rounded-circle" style="width: 80px; height: 80px; object-fit: cover; border: 2px solid #c58940;">
+    </div>
+    {% endif %}
+    <h2>Create a Royal Wedding Event</h2>
+
+    <form method="POST" enctype="multipart/form-data" class="register-form">
+        <label for="bride" class="form-label">वधूचे नाव (Bride Name):</label>
+        <input type="text" id="bride" name="bride" placeholder="Bride Name" class="form-control" required>
+        
+        <label for="groom" class="form-label mt-2">वराचे नाव (Groom Name):</label>
+        <input type="text" id="groom" name="groom" placeholder="Groom Name" class="form-control" required>
+        
+        <label for="date" class="form-label mt-2">लग्नाची तारीख (Date):</label>
+        <input type="date" id="date" name="date" class="form-control" required>
+        
+        <label for="venue" class="form-label mt-2">स्थळ (Venue):</label>
+        <input type="text" id="venue" name="venue" placeholder="Venue" class="form-control" required>
+
+        <label for="culture" class="form-label mt-2">संस्कृती (Culture):</label>
+        <select id="culture" name="culture" class="form-select" required>
+            <option value="">Select Culture</option>
+            <option>Marathi</option>
+            <option>Punjabi</option>
+            <option>South Indian</option>
+        </select>
+
+        <label class="form-label mt-2">प्रतिमा अपलोड करा (Upload Image):</label>
+        <input type="file" name="image" class="form-control" id="imageInput" required onchange="previewImage(event)">
+        <div class="text-center mt-2">
+            <img id="imagePreview" src="#" alt="Image Preview" style="display:none; max-width:180px; max-height:180px; border-radius:10px; border:1px solid #ccc;" />
+        </div>
+
+        <button type="submit" class="btn btn-warning w-100 mt-3 text-white fw-bold">Create Royal Wedding</button>
+    </form>
+
+    <script>
+    function previewImage(event) {
+        var reader = new FileReader();
+        reader.onload = function(){
+            var output = document.getElementById('imagePreview');
+            output.src = reader.result;
+            output.style.display = 'block';
+        };
+        reader.readAsDataURL(event.target.files[0]);
+    }
+    </script>
+</body>
+</html>

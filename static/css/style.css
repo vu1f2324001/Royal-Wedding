@@ -1,0 +1,215 @@
+body {
+    font-family: 'Segoe UI', sans-serif;
+    background: linear-gradient(to right, #ffecd2, #fcb69f);
+    text-align: center;
+    padding: 100px;
+    margin: 0;
+}
+
+.container {
+    background-color: #fff;
+    padding: 40px;
+    border-radius: 15px;
+    display: inline-block;
+    box-shadow: 0 4px 15px rgba(0,0,0,0.2);
+}
+
+h1 {
+    color: #8B0000;
+    font-size: 40px;
+    margin-bottom: 30px;
+}
+
+.highlight {
+    color: #FF4500;
+}
+
+.btn {
+    display: inline-block;
+    margin: 10px;
+    padding: 12px 25px;
+    background-color: #FF6347;
+    color: white;
+    text-decoration: none;
+    border-radius: 8px;
+    font-size: 18px;
+    transition: 0.3s ease;
+}
+
+.btn:hover {
+    background-color: #e5533d;
+}
+body {
+    font-family: 'Segoe UI', sans-serif;
+    background-color: #f5f7fa;
+    margin: 0;
+    padding: 40px;
+    color: #333;
+}
+
+h1 {
+    text-align: center;
+    font-size: 36px;
+    color: #2c3e50;
+    margin-bottom: 30px;
+}
+
+h2 {
+    color: #34495e;
+    margin-top: 40px;
+    border-bottom: 2px solid #ddd;
+    padding-bottom: 10px;
+}
+
+.card {
+    background-color: white;
+    padding: 20px;
+    margin: 15px 0;
+    border-radius: 10px;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+}
+
+.card p {
+    margin: 5px 0;
+    font-size: 16px;
+}
+.attend-card {
+    background-color: #fff;
+    border: 1px solid #ddd;
+    border-radius: 12px;
+    padding: 20px;
+    margin-bottom: 30px;
+    box-shadow: 0 3px 10px rgba(0,0,0,0.1);
+}
+
+.attend-card h3 {
+    margin-top: 0;
+    color: #2c3e50;
+}
+
+.attend-card p {
+    font-size: 15px;
+    color: #555;
+}
+
+.attend-card form {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    margin-top: 15px;
+}
+
+.attend-card input,
+.attend-card select {
+    padding: 10px;
+    font-size: 15px;
+    border: 1px solid #ccc;
+    border-radius: 8px;
+    width: 100%;
+}
+
+.attend-card button {
+    background-color: #27ae60;
+    color: white;
+    padding: 10px;
+    font-size: 16px;
+    border: none;
+    border-radius: 8px;
+    cursor: pointer;
+    transition: background-color 0.3s;
+}
+
+.attend-card button:hover {
+    background-color: #219150;
+}
+body {
+    font-family: 'Segoe UI', sans-serif;
+    background: #faf3e0;
+    padding: 30px;
+}
+
+h2 {
+    text-align: center;
+    color: #8e44ad;
+}
+
+.register-form {
+    max-width: 500px;
+    margin: 0 auto;
+    background: #fff;
+    padding: 25px 30px;
+    border-radius: 15px;
+    box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+}
+
+.register-form input,
+.register-form select {
+    padding: 12px;
+    border: 1px solid #ccc;
+    border-radius: 8px;
+    font-size: 16px;
+}
+
+.register-form button {
+    background: #8e44ad;
+    color: white;
+    padding: 12px;
+    font-size: 17px;
+    border: none;
+    border-radius: 8px;
+    cursor: pointer;
+    transition: background 0.3s;
+}
+
+.register-form button:hover {
+    background: #732d91;
+}
+.btn {
+    display: inline-block;
+    margin: 10px;
+    padding: 12px 24px;
+    background-color: #f06292;
+    color: white;
+    text-decoration: none;
+    border-radius: 6px;
+    font-weight: bold;
+    transition: background 0.3s;
+}
+
+.btn:hover {
+    background-color: #e91e63;
+}
+.navbar {
+    background-color: #8e44ad;
+    color: white;
+    padding: 10px 20px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.navbar-brand a {
+    color: white;
+    font-size: 24px;
+    text-decoration: none;
+    font-weight: bold;
+}
+
+.navbar-menu {
+    list-style: none;
+    display: flex;
+    gap: 15px;
+}
+
+.navbar-menu li a {
+    color: white;
+    text-decoration: none;
+    font-weight: 500;
+}
+
+.navbar-menu li a:hover {
+    text-decoration: underline;
+}

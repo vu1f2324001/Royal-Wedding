@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Signup</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/logsign.css') }}">
+
+</head>
+<body class="signup-body">
+<div class="signup-container">
+    <h2>Create Account</h2>
+    <form method="POST">
+        <label>Email:</label>
+        <input type="email" name="email" required><br>
+
+        <label>Mobile Number:</label>
+        <input type="text" name="mobile" required><br>
+
+        <label>Password:</label>
+        <input type="password" name="password" required><br>
+
+        <label>Confirm Password:</label>
+        <input type="password" name="confirm_password" required><br>
+
+        <label>Role:</label>
+        <select name="role">
+            <option value="user">Attend (Guest)</option>
+            <option value="admin">Register Wedding (Married)</option>
+        </select><br>
+
+        <input type="submit" value="Signup">
+    </form>
+    <p>Already have an account? <a href="/login">Login</a></p>
+    {% if message %}<p>{{ message }}</p>{% endif %}
+</div>
+</body>
+</html>

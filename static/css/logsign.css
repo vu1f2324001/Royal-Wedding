@@ -1,0 +1,117 @@
+/* Common Body */
+body.signup-body, body.login-body {
+    background: linear-gradient(135deg, #fff1e6, #ffe0cc);
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    margin: 0;
+}
+
+/* Container */
+.signup-container {
+    background: #ffffff;
+    padding: 50px 50px;
+    border-radius: 20px;
+    box-shadow: 0 12px 40px rgba(255, 163, 72, 0.3);
+    max-width: 420px;
+    width: 100%;
+    text-align: center;
+    animation: fadeIn 0.8s ease-in;
+}
+
+/* Heading */
+.signup-container h2 {
+    font-size: 32px;
+    color: #d48806;
+    margin-bottom: 30px;
+    letter-spacing: 1px;
+}
+
+/* Labels */
+.signup-container label {
+    display: block;
+    text-align: left;
+    font-weight: 600;
+    margin-bottom: 8px;
+    color: #5c3d1e;
+    font-size: 14px;
+}
+
+/* Inputs */
+.signup-container input[type="text"],
+.signup-container input[type="email"],
+.signup-container input[type="password"] {
+    width: 100%;
+    padding: 12px 14px;
+    border: 1px solid #e6b87a;
+    border-radius: 10px;
+    margin-bottom: 20px;
+    box-sizing: border-box;
+    font-size: 15px;
+    background-color: #fffdfa;
+    transition: 0.3s ease;
+}
+
+.signup-container input:focus {
+    border-color: #ffab40;
+    outline: none;
+    box-shadow: 0 0 5px rgba(255, 170, 0, 0.4);
+}
+
+/* Submit Button */
+.signup-container input[type="submit"] {
+    width: 100%;
+    padding: 12px;
+    background: linear-gradient(to right, #ff9933, #ff6600);
+    color: white;
+    border: none;
+    border-radius: 10px;
+    font-size: 16px;
+    font-weight: bold;
+    cursor: pointer;
+    transition: background 0.3s ease;
+}
+
+.signup-container input[type="submit"]:hover {
+    background: linear-gradient(to right, #ff8533, #e65c00);
+    transform: scale(1.02);
+}
+
+/* Link text */
+.signup-container p {
+    font-size: 14px;
+    margin-top: 18px;
+    color: #444;
+}
+
+.signup-container a {
+    color: #ff7700;
+    font-weight: bold;
+    text-decoration: none;
+}
+
+.signup-container a:hover {
+    text-decoration: underline;
+}
+
+/* Error or Message */
+.signup-container .error,
+.signup-container .message {
+    color: #d9534f;
+    font-weight: bold;
+    margin-top: 10px;
+}
+
+/* Animation */
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+        transform: translateY(-20px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}

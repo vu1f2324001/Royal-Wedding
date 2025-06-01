@@ -1,0 +1,164 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>OTP Verification</title>
+    <style>
+        body {
+            font-family: 'Georgia', serif;
+            background: linear-gradient(to right, #fffaf0, #f7e7ce);
+            color: #4a4a4a;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            height: 100vh;
+            margin: 0;
+        }
+
+        .otp-container {
+            background-color: #ffffff;
+            padding: 40px 40px;
+            border-radius: 16px;
+            border: 2px solid #e0c187;
+            box-shadow: 0 8px 24px rgba(0, 0, 0, 0.15);
+            text-align: center;
+            width: 380px;
+        }
+
+        h3 {
+            color: #b8860b;
+            margin-bottom: 25px;
+            font-size: 26px;
+        }
+
+        input[type="text"] {
+            width: 100%;
+            padding: 12px 14px;
+            border-radius: 10px;
+            border: 1px solid #d1b98e;
+            font-size: 16px;
+            margin-bottom: 20px;
+            outline: none;
+        }
+
+        input[type="text"]:focus {
+            border-color: #b8860b;
+            box-shadow: 0 0 8px #f0e68c;
+        }
+
+        button {
+            background: linear-gradient(to right, #b8860b, #daa520);
+            color: white;
+            padding: 12px 20px;
+            border: none;
+            border-radius: 10px;
+            font-size: 15px;
+            cursor: pointer;
+            transition: background 0.3s ease, transform 0.2s ease;
+        }
+
+        button:hover {
+            background: linear-gradient(to right, #cfa82c, #b98c0a);
+            transform: scale(1.03);
+        }
+
+        #timer {
+            margin-top: 20px;
+            font-weight: bold;
+            color: #d2691e;
+        }
+
+        .resend-form,
+        .refresh-btn {
+            margin-top: 10px;
+        }
+
+        .refresh-btn button {
+            background: linear-gradient(to right, #228b22, #32cd32);
+        }
+
+        .refresh-btn button:hover {
+            background: linear-gradient(to right, #1c7c1c, #28a428);
+        }
+
+        ul {
+            list-style-type: none;
+            padding: 0;
+            margin-top: 20px;
+        }
+
+        li {
+            color: green;
+        }
+
+        p.error {
+            color: #cc0000;
+            margin-top: 10px;
+        }
+
+        @media screen and (max-width: 450px) {
+            .otp-container {
+                width: 90%;
+                padding: 30px 20px;
+            }
+        }
+    </style>
+</head>
+<body>
+
+<div class="otp-container">
+    <h3>🔐 OTP Verification</h3>
+
+    <form method="POST">
+        <input type="text" name="otp" required placeholder="Enter OTP">
+        <button type="submit">Verify</button>
+    </form>
+
+    <form method="POST" action="/resend_otp" class="resend-form">
+        <button type="submit">Resend OTP</button>
+    </form>
+
+    <div class="refresh-btn">
+        <form method="GET">
+            <button type="submit">Refresh Page</button>
+        </form>
+    </div>
+
+    {% if message %}
+    <p class="error">{{ message }}</p>
+    {% endif %}
+
+    {% with messages = get_flashed_messages() %}
+      {% if messages %}
+        <ul>
+          {% for msg in messages %}
+            <li>{{ msg }}</li>
+          {% endfor %}
+        </ul>
+      {% endif %}
+    {% endwith %}
+
+    <p id="timer"></p>
+</div>
+
+<script>
+    let timeLeft = {{ remaining_seconds }};
+    const timer = document.getElementById("timer");
+
+    function updateTimer() {
+        if (timeLeft <= 0) {
+            timer.innerHTML = "⏰ OTP expired. Please refresh or resend.";
+        } else {
+            let minutes = Math.floor(timeLeft / 60);
+            let seconds = timeLeft % 60;
+            timer.innerHTML = "⏳ Time left: " + minutes + "m " + (seconds < 10 ? '0' + seconds : seconds) + "s";
+            timeLeft--;
+            setTimeout(updateTimer, 1000);
+        }
+    }
+
+    updateTimer();
+</script>
+
+</body>
+</html>

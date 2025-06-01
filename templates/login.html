@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Login</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/logsign.css') }}">
+</head>
+<body class="signup-body">
+<div class="signup-container">
+    <h2>Login</h2>
+    <form method="POST">
+        <label>Email:</label>
+        <input type="email" name="email" required><br>
+
+        <label>Password:</label>
+        <input type="password" name="password" required><br>
+
+        <input type="submit" value="Login">
+    </form>
+
+    <!-- Forgot Password Link -->
+    <p><a href="/forgot_password">Forgot Password?</a></p>
+
+    <p>Don't have an account? <a href="/signup">Signup</a></p>
+    
+    {% if message %}<p>{{ message }}</p>{% endif %}
+</div>
+</body>
+</html>
