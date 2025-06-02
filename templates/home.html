@@ -49,8 +49,68 @@
     .text-shadow {
       text-shadow: 2px 2px 8px #000;
     }
+    /* Chat bubble style for comments */
+    .chat-bubble {
+      background: #f3f3f3;
+      border-radius: 16px;
+      padding: 12px 16px;
+      margin-bottom: 10px;
+      max-width: 85%;
+      word-break: break-word;
+      box-shadow: 0 2px 8px #0001;
+      position: relative;
+    }
+    .chat-bubble.me {
+      background: #ffe9b3;
+      margin-left: auto;
+    }
+    .chat-bubble .delete-btn {
+      position: absolute;
+      top: 8px;
+      right: 8px;
+      padding: 2px 8px;
+      font-size: 0.9rem;
+    }
+    .chat-bubble img, .chat-bubble video {
+      max-width: 100%;
+      max-height: 180px;
+      border-radius: 8px;
+      margin-top: 6px;
+      display: block;
+    }
+    @media (max-width: 600px) {
+      .modal-dialog {
+        max-width: 99vw;
+        margin: 0.5rem auto;
+      }
+      .modal-content {
+        border-radius: 12px;
+        padding: 0.5rem;
+      }
+      .chat-bubble {
+        font-size: 1rem;
+        padding: 10px 10px;
+        max-width: 98vw;
+      }
+      .modal-body {
+        padding: 0.5rem 0.2rem;
+      }
+      .modal-title {
+        font-size: 1.1rem;
+      }
+      .form-control, .btn, .form-select {
+        font-size: 1rem;
+      }
+      .modal-footer, .modal-header {
+        padding-left: 0.5rem;
+        padding-right: 0.5rem;
+      }
+      .row.g-2 > [class^='col-'] {
+        margin-bottom: 0.5rem;
+      }
+    }
   </style>
-      <meta name="viewport" content="width=device-width, initial-scale=0.35">
+  <meta name="viewport" content="width=device-width, initial-scale=0.35"></meta>
 
 </head>
 <body>
@@ -88,28 +148,28 @@
       <h2 class="text-center mb-4" style="color:#b08500; font-family:'Cinzel',serif;">Why Choose Royal Wedding?</h2>
       <div class="row g-4 text-center">
         <div class="col-md-3">
-          <div class="p-4 border rounded bg-white h-100">
+          <div class="p-3 border rounded bg-white h-100">
             <span class="fs-1 text-warning">💍</span>
             <h5 class="mt-3">Easy Wedding Registration</h5>
             <p>Register your wedding in minutes and manage all details online.</p>
           </div>
         </div>
         <div class="col-md-3">
-          <div class="p-4 border rounded bg-white h-100">
+          <div class="p-3 border rounded bg-white h-100">
             <span class="fs-1 text-warning">🎉</span>
             <h5 class="mt-3">Invite & Track Guests</h5>
             <p>Send invites, track RSVPs, and manage your guest list effortlessly.</p>
           </div>
         </div>
         <div class="col-md-3">
-          <div class="p-4 border rounded bg-white h-100">
+          <div class="p-3 border rounded bg-white h-100">
             <span class="fs-1 text-warning">🔒</span>
             <h5 class="mt-3">Secure & Private</h5>
             <p>Your data is safe with us. Only you and your guests can access your event.</p>
           </div>
         </div>
         <div class="col-md-3">
-          <div class="p-4 border rounded bg-white h-100">
+          <div class="p-3 border rounded bg-white h-100">
             <span class="fs-1 text-warning">🌏</span>
             <h5 class="mt-3">Global Access</h5>
             <p>Friends & family can attend and bless your wedding from anywhere in the world.</p>
@@ -188,7 +248,7 @@
             <div class="d-flex flex-column gap-3">
               {% for c in comments %}
               <div class="d-flex {% if user and c.user_email == user.email %}justify-content-end{% else %}justify-content-start{% endif %}">
-                <div class="p-3 rounded shadow-sm" style="background: {% if user and c.user_email == user.email %}#ffe9b3{% else %}#f3f3f3{% endif %}; max-width: 80%; position:relative;">
+                <div class="p-3 rounded shadow-sm chat-bubble {% if user and c.user_email == user.email %}me{% endif %}" style="background: {% if user and c.user_email == user.email %}#ffe9b3{% else %}#f3f3f3{% endif %}; max-width: 80%; position:relative;">
                   <div class="fw-bold small mb-1">{{ c.name }}</div>
                   <div>{{ c.comment }}</div>
                   {% if c.media and c.media.endswith('.mp4') %}
@@ -199,7 +259,7 @@
                   <div class="text-muted small mt-1">{{ c.timestamp.strftime('%d %b %Y, %I:%M %p') }}</div>
                   {% if user and c.user_email == user.email %}
                     <form method="POST" action="/delete_comment/{{ c.id }}" style="display:inline;">
-                      <button type="submit" class="btn btn-sm btn-danger mt-2">Delete</button>
+                      <button type="submit" class="btn btn-sm btn-danger mt-2 delete-btn">Delete</button>
                     </form>
                   {% endif %}
                 </div>

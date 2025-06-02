@@ -1,0 +1,21 @@
+# Ignore Python cache and compiled files
+__pycache__/
+*.pyc
+
+# Ignore environment and config
+.env
+instance/
+
+# Ignore database
+*.db
+*.sqlite3
+
+# Ignore media uploads
+static/comments/
+static/uploads/
+static/images/
+
+# Ignore VSCode and OS files
+.vscode/
+.DS_Store
+Thumbs.db

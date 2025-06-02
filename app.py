@@ -9,6 +9,7 @@ import smtplib
 from email.message import EmailMessage
 from werkzeug.security import generate_password_hash, check_password_hash
 import requests
+from dotenv import load_dotenv
 
 password = "your_admin_password"  # Example password
 hashed_password = generate_password_hash(password)
@@ -91,13 +92,13 @@ def send_otp(email):
 
     msg = EmailMessage()
     msg['Subject'] = 'Your OTP Verification Code'
-    msg['From'] = 'akshadavalkunde40@gmail.com'
+    msg['From'] = os.environ.get('EMAIL_USER')
     msg['To'] = email
     msg.set_content(f'Your OTP is: {otp}\nIt will expire in 2 minutes.')
     
     try:
         with smtplib.SMTP_SSL('smtp.gmail.com', 465) as smtp:
-            smtp.login('akshadavalkunde40@gmail.com', 'mexi zoru usvy viul')
+            smtp.login(os.environ.get('EMAIL_USER'), os.environ.get('EMAIL_PASS'))
             smtp.send_message(msg)
         print("OTP sent successfully!")
         return True
@@ -569,6 +570,7 @@ def delete_all_comments():
 
 # ==== MAIN ====
 if __name__ == '__main__':
+    load_dotenv()
     with app.app_context():
         db.create_all()
     app.run(host='0.0.0.0', port=5000, debug=True)
